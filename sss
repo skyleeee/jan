@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Lista obrazków (ścieżki do plików)
+images = [
+    "image1.png", "image2.png", "image3.png", "image4.png", "image5.png",
+    "image6.png", "image7.png", "image8.png", "image9.png", "image10.png"
+]
+
+# Funkcja do aktualizacji klatek animacji
+def update(frame):
+    img.set_array(plt.imread(images[frame]))
+    return img,
+
+# Tworzenie figury i osi
+fig, ax = plt.subplots()
+img = ax.imshow(plt.imread(images[0]))
+
+# Tworzenie animacji
+ani = animation.FuncAnimation(fig, update, frames=len(images), interval=1000, blit=True)
+
+# Zapisanie animacji do pliku
+ani.save("jan_czochralski_animation.mp4", writer="ffmpeg")
+
+plt.show()
